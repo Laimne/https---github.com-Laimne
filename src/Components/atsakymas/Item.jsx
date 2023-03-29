@@ -7,8 +7,8 @@ function Item({ data, modal, remove }) {
       <tr>
         <td>{data.id}</td>
         <td>{data.name}</td>
+        <td>{data.tittle}</td>
         <td>{data.class}</td>
-        <td>{data.height}</td>
         <td> <button className="btn btn-primary" onClick={showEdit}>
           Edit
         </button> </td>

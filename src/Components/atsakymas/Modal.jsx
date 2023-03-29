@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 function Modal({ showModal, hide, modalInputs, edit }) {
   const [inputs, setInputs] = useState({
     name: "",
+    tittle:"",
     class: "",
-    height: "",
   });
 
   const control = (e, what) => {
@@ -17,8 +17,8 @@ function Modal({ showModal, hide, modalInputs, edit }) {
     setInputs({
       
       name: modalInputs.name,
+      tittle: modalInputs.tittle,
       class: modalInputs.class,
-      height: modalInputs.height,
     });
   }, [modalInputs]);
 
@@ -27,8 +27,8 @@ function Modal({ showModal, hide, modalInputs, edit }) {
       {
     
         name: inputs.name,
+        tittle: inputs.tittle,
         class: inputs.class,
-        height: inputs.height,
       },
       modalInputs.id
     );
@@ -51,7 +51,7 @@ function Modal({ showModal, hide, modalInputs, edit }) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Edit X
+              Klausimynas
             </h5>
             <button
               type="button"
@@ -80,6 +80,19 @@ function Modal({ showModal, hide, modalInputs, edit }) {
                 />
               </div>
               <div className="form-group">
+                <label htmlFor="th4" className="col-form-label">
+                  tittle
+                </label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="th4"
+                  value={inputs.tittle}
+                  onChange={(e) => control(e, "tittle")}
+                  placeholder="Enter tittle"
+                />
+              </div>
+ <div className="form-group">
                 <label htmlFor="th3" className="col-form-label">
                   class
                 </label>
@@ -92,21 +105,6 @@ function Modal({ showModal, hide, modalInputs, edit }) {
                   placeholder="Enter class"
                 />
               </div>
-
-              <div className="form-group">
-                <label htmlFor="th4" className="col-form-label">
-                  height
-                </label>
-                <input
-                  className="form-control"
-                  type="text"
-                  id="th4"
-                  value={inputs.height}
-                  onChange={(e) => control(e, "height")}
-                  placeholder="Enter height"
-                />
-              </div>
-
               <div className="modal-footer">
                 <button
                   type="button"

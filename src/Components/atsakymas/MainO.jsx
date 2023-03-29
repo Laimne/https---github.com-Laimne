@@ -12,13 +12,13 @@ function MainA() {
   const [modalInputs, setModalInputs] = useState({
     id: "",
     name: "",
+    tittle: "",
     class: "",
-    height: "",
   });
 //Read React
   useEffect(() => {
     axios
-      .get("http://localhost:3003/obelis")
+      .get("http://localhost:3003/atsakymas")
       .then((res) => {
         setTable(res.data);
       })
@@ -27,7 +27,7 @@ function MainA() {
 //Update React
   const edit = (item, id) => {
     setShowModal(false);
-    axios.put('http://localhost:3003/obelis/' + id, item)
+    axios.put('http://localhost:3003/atsakymas/' + id, item)
     .then(res => {
         setLastUpdate(Date.now());
     })
@@ -36,7 +36,7 @@ function MainA() {
 
 //Delete React
 const remove = (item) => {
- axios.delete('http://localhost:3003/obelis/' + item.id)
+ axios.delete('http://localhost:3003/atsakymas/' + item.id)
             .then(res => {
                 setLastUpdate(Date.now());
             })
@@ -58,15 +58,14 @@ const remove = (item) => {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">
-              <div className="card-header">Sodo augalai</div>
+              <div className="card-header">Klausymai ir atsakymai</div>
               <div className="card-body">
                 <table className="table">
                   <tbody>
                   <tr>
-                    <th>Numeris</th>
-                    <th>Vardas</th>
-                    <th>Rusis</th>
-                    <th>Aukstis</th>
+                    <th>Pavadinimas</th>
+                    <th>Aprašymas</th>
+                    <th>Klasė</th>
                     <th>Edit</th>
                     <th>Delete</th>
                   </tr>
